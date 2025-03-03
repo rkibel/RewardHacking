@@ -6,7 +6,7 @@ from train_hack import HackyCarRacing
 
 def main(checkpoint_path):
     # Wrap the environment so it records a video
-    env = HackyCarRacing(gym.make("CarRacing-v3", render_mode="rgb_array_list"))
+    env = gym.make("CarRacing-v3", render_mode="rgb_array_list")
     env = RecordVideo(env, video_folder="./videos", episode_trigger=lambda e: True)
 
     model = PPO.load(checkpoint_path, env=env)
